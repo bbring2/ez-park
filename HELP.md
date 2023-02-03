@@ -15,22 +15,7 @@
 | POST   | ``` /guest/log-in```        | log in who already signed up       |
 | POST   | ``` /guest/google```        | sign up or log in for oauth2 users |
 | GET    | ``` /guest/missing```       | to get temporary password          |
-| GET    | ``` /api/v1/{student-id}``` | ㅇ                                  |
-| POST   | ``` /api/v1/{student-id}``` | ㅇ                                  |
-| PATCH  | ``` /api/v1/{student-id}``` | ㅇ                                  |
-| DELETE | ``` /api/v1/{student-id}``` | ㅇ                                  |
-| GET    | ``` /api/v1/{student-id}``` | ㅇ                                  |
-| POST   | ``` /api/v1/{student-id}``` | ㅇ                                  |
-| PATCH  | ``` /api/v2/{student-id}``` ||
-| DELETE | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
-| GET    | ``` /api/v2/{student-id}``` ||
+
 
 
 
