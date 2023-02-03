@@ -1,4 +1,4 @@
-package com.example.mongodbapi;
+package com.example.mongodbapi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

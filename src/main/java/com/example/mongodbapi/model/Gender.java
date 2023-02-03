@@ -1,4 +1,4 @@
-package com.example.mongodbapi;
+package com.example.mongodbapi.model;
 
 public enum Gender {
     FEMALE, MALE;

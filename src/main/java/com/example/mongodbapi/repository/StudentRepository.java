@@ -1,8 +1,8 @@
-package com.example.mongodbapi;
+package com.example.mongodbapi.repository;
 
+import com.example.mongodbapi.model.Student;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface StudentRepository extends MongoRepository<Student, String> {

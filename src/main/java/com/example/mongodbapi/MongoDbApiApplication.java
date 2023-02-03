@@ -1,5 +1,9 @@
 package com.example.mongodbapi;
 
+import com.example.mongodbapi.model.Address;
+import com.example.mongodbapi.model.Gender;
+import com.example.mongodbapi.model.Student;
+import com.example.mongodbapi.repository.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
