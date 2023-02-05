@@ -4,9 +4,9 @@
 ## About This APIs
 - In order to manage students, It has been made.
 - Following URI versioning method, This API can be managed by authorization.
-- By using Spring security, Authentication has been made for users.
-- You can also check requirements about this APIs.
-- Following REST API rules, 
+
+
+
 
 ## End points
 | method | URI                         | description                        |
