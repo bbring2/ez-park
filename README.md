@@ -1,9 +1,4 @@
-# Management APIs
-> This repository has been made this application connected to Mongodb(NoSQL).
-
-## About This APIs
-- In order to manage students, It has been made.
-- Following URI versioning method, This API can be managed by authorization.
+# ...
 
 
 
