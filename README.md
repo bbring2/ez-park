@@ -1,55 +1,8 @@
-# ...
-
-
-
-
-## End points
-| method | URI                         | description                        |
-|--------|-----------------------------|------------------------------------|
-| POST   | ``` /guest/sign-up```       | sign up for new users              |
-| POST   | ``` /guest/log-in```        | log in who already signed up       |
-| POST   | ``` /guest/google```        | sign up or log in for oauth2 users |
-| GET    | ``` /guest/missing```       | to get temporary password          |
-
-
-
+# CRM Project
+> This project is the application which can manage staff with, and can register shops on database connected with this application.
 
 ## Requirements
-
-
-
-## About mongodb
-### Collections
--  Mongo stores documents (rows) in collections(table).
-### Documents
-- MongoDB stores data records as BSON documents. BSON is Binary representation of JSON Documents.
-- As you can see the below codes which look like JSON, those can be documents on MongoDB.
-```json
-{
-  "name": "bbring",
-  "age": 27,
-  "status": "A",
-  "groups": ["java", "python"]
-}
-```
-
-### BSON Types
-| Type               | Alias      |
-|--------------------|------------|
-| Double             | double     |
-| String             | string     |
-| Object             | object     |
-| Array              | array      |
-| Binary data        | binData    |
-| ObjectId           | objectId   |
-| Boolean            | bool       |
-| Date               | date       |
-| Null               | null       |
-| Regular Expression | regex      |
-| Javascript         | javascript |
-| 32 Big integer     | int        |
-| 64 bit integer     | long       |
-| Decimal128         | decimal    |
-| Min Key            | minKey     |
-| Max Key            | maxKey     |
-   
+- There are 2 different authorization to use this application, which are admin and member. 
+- Admins can manage shops and the staffs of the shops, and Member can register their own shop on their account.
+- A Member (which can be manager of the shop) can register, update, delete and see their shops on their account.
+- Admins can manage whole shops registered on this application. 
