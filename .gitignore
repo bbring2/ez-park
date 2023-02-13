@@ -1,7 +1,7 @@
 README.md
 .gradle
-src/main/resources/application-dev.yaml
-src/main/resources/application-local.yaml
+/src/main/resources/application-dev.yaml
+/src/main/resources/application-local.yaml
 
 build/
 !gradle/wrapper/gradle-wrapper.jar
