@@ -1,4 +1,4 @@
-package com.example.mongodbapi.common.config;
+package com.bbringworld.ezparkapi.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

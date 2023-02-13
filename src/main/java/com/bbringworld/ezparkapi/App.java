@@ -1,16 +1,13 @@
-package com.example.mongodbapi;
+package com.bbringworld.ezparkapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 @SpringBootApplication
-public class MongoDbApiApplication {
+public class App {
 
     public static void main(String[] args) {
-        SpringApplication.run(MongoDbApiApplication.class, args);
+        SpringApplication.run(App.class, args);
     }
 
 }
