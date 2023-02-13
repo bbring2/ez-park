@@ -1,8 +1,11 @@
-# LE63 API
-> This project is the application which can manage staff with, and can register shops on database connected with this application.
+# EZ Park API
+> This project is application which can park on offline parking lot, and be managed by admins.
+
+## 
 
 ## Requirements
-- There are 2 different authorization to use this application, which are admin and member. 
-- Admins can manage shops and the staffs of the shops, and Member can register their own shop on their account.
-- A Member (which can be manager of the shop) can register, update, delete and see their shops on their account.
-- Admins can manage whole shops registered on this application.
+- Admin can manage pricing and time for the EZ Park.
+- Admin should authenticate before they access APIs, otherwise, they can't have the authorization to manage.
+- There are 2 different guests who use this parking lot. We call them as guests who use this parking lot for once, and member who use this parking lot with subscription service.
+- Every guest can have subscription whenever they want, However, they cannot register it while they park their car as just guest.
+

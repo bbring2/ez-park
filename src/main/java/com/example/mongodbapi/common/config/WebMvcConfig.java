@@ -1,4 +1,4 @@
-package com.example.mongodbapi.config;
+package com.example.mongodbapi.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
