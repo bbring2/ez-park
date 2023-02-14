@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: local
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: ${JASYPT_ENC_PASSWORD}

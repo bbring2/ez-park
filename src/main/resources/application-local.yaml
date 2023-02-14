@@ -11,6 +11,6 @@ spring:
       auto-index-creation: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ezpark?serverTimezone=Asia/Seoul
-    username: root
-    password: youngmango935
+    url: ENC(tWGA5AwA7zfo1sZnICWevhAA2lgnZ4cuUlePoiOY2ArQwYvfhQZOH3+quVDme9HKbtCdtDIqkRH33i5QVWLXL8iWJioa89tu)
+    username: ENC(SJ+4G8Ju8tZmohXqlWzdxA==)
+    password: ENC(sXGEffanhDIwEMMmz3YgdQrOnYwxjfqn)
