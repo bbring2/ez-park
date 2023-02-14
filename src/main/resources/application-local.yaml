@@ -6,8 +6,8 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      authentication-database: admin
-      database: sample
+      authentication-database: ENC(C+qmRjVP+D7Nmr6d5j7nyQ==)
+      database: ENC(8G/+hgYTq8ngqOflas4l0w==)
       auto-index-creation: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

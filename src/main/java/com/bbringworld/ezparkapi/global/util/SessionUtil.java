@@ -1,6 +1,6 @@
 package com.bbringworld.ezparkapi.global.util;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 public class SessionUtil {
 
