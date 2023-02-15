@@ -1,0 +1,77 @@
+server:
+  port: 80
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: ENC(C+qmRjVP+D7Nmr6d5j7nyQ==)
+      database: ENC(8G/+hgYTq8ngqOflas4l0w==)
+      auto-index-creation: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(tWGA5AwA7zfo1sZnICWevhAA2lgnZ4cuUlePoiOY2ArQwYvfhQZOH3+quVDme9HKbtCdtDIqkRH33i5QVWLXL8iWJioa89tu)
+    username: ENC(SJ+4G8Ju8tZmohXqlWzdxA==)
+    password: ENC(sXGEffanhDIwEMMmz3YgdQrOnYwxjfqn)
+    hikari:
+      #커넥션 풀의 auto commit 여부를 설정한다.
+      #Spring Boot 2부터 커넥션 풀의 auto-commit 설정값에 따라 hibernate.connection.provider_disables_autocommit: true를 자동으로 설정해준다. 이 값은 hibernate가 커넥션 풀의 autocommit 값을 따르겠다는 의미이다.
+      #hibernate 특성상 트랜젝션 시작 전 autoCommit 가 true 라면, autoCommit 값을 false로 설정하고, 트랜젝션이 끝나면 autoCommit 값을 원래 값으로 바꿔주는 로직이 존재한다.
+      #hikariCP의 auto-commit=false로 설정하고, hibernate의 provider_disables_autocommit 값을 true로 자동 설정 함으로써, hibernate의 불필요한 로직을 skip 함으로써 성능을 향상한다.
+      #만약 provider_disables_autocommit=true로 놓고 커넥션 풀의 autoCommit을 true로 놓게 되면 트랜젝션은 동작하지 않는다. 실패하더라도, 롤백이 되지 않으므로 주의하도록 하자
+      auto-commit: false
+      # 데이터베이스 연결이 여전히 활성화되어있는지 확인하기 위해 pool에서 connection을 제공하기 전에 실행되는 쿼리입니다. 드라이버가 JDBC4를 지원하는 경우 이 속성을 사용하지 않는 것이 좋다고합니다.
+      connection-test-query: SELECT 1
+      # 풀에서 유지해줄 유휴 상태의 커넥션 최소 개수를 설정한다.
+      # 최적의 성능과 응답성을 요구한다면 이 값은 설정하지 않는 게 좋다고 hikariCP github에 나와있다.
+      minimum-idle: 10
+      # 유휴 상태와 사용 중인 커넥션을 포함해서 풀이 허용하는 최대 커넥션 개수를 설정한다.
+      # 풀이 이 크기에 도달하고 유휴 커넥션이 없을 때 connectionTimeout이 지날 때까지 getConnection() 호출은 블록킹 된다.
+      # Connection is not available, request timed out after 30000ms
+      # 간혹 위와 같은 에러 메시지가 나온다면 pool locking (deadlock) 상태에 빠진 상태이다. 기본적으로 connection timeout 30초인데, pool에서 connection을 30초 동안 획득하지 못한 상태로 이해하면 된다.
+      # 발생 원인은 1개의 Transation에서 2개 이상의 connection을 사용할 때이다.  가령, maximum-pool-szie 가 10로 설정하고, 10개의 Transation에서 모두 1개의 connection 을 획득 한 상태에서 10개의 Transation에서 모두 1개 더 connection 을 대기하게 된다면, deadlock 상태가 된다. 간단히 해결하려면, maximum-pool-size 값을 늘려주면 되지만,  원천적인 원인은 애플리케이션 문제이다.
+      # pool sizing에 대해서 더 자세한 내용은 아래 링크를 참고하자
+      maximum-pool-size: 50
+      #Connection.TRANSACTION_NONE : transaction을 지원하지 않는다
+      #Connection.TRANSACTION_READ_UNCOMMITTED : transaction이 끝나지 않았을 때, 다른 transaction에서 값을 읽는 경우 commit되지 않은 값(dirty value)를 읽는다
+      #Connection.TRANSACTION_READ_COMMITTED : transaction이 끝나지 않았을 때, 다른 transaction에서 값을 읽는 경우 변경되지 않은 값을 읽는다
+      #Connection.TRANSACTION_REPEATABLE_READ : 같은 transaction내에서 값을 또다시 읽을 때, 변경되기 전의 값을 읽는다 TRANSACTION_READ_UNCOMMITTED 와 같이 사용될 수 없다
+      #Connection.TRANSACTION_SERIALIZABLE : dirty read를 지원하고, non-repeatable read를 지원한다
+      #기본값을 각 Driver vendor의 JDBCDriver에서 지원하는 Transaction Isoluation을 따라간다. (none으로 설정시)
+      transaction-isolation: TRANSACTION_READ_UNCOMMITTED
+      # 이 옵션은 사용자가 pool의 이름을 지정함
+      #logging이나 JMX management console에 표시되는 이름
+      pool-name: pool-ezpark
+
+
+
+
+      jpa:
+        database-platform: org.hibernate.dialect.MariaDB103Dialect
+        properties:
+          hibernate:
+            format_sql: true
+            hbm2ddl.auto: update
+            implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+            physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        open-in-view: false
+        show-sql: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl:
+          auto: validate
+            # none : 기본 값이며 아무 일도 일어나지 않는다.
+          #create-only : 데이터베이스를 새로 생성한다.
+          #drop : 데이터베이스를 drop 한다.
+          #create : 데이터베이스를 drop 한 후, 데이터베이스를 새로 생성한다.(기능적으로는 drop + create-only와 같다)
+          #create-drop : SessionFactory가 시작될 때 스키마를 drop하고 재생성하며, SessionFactory가 종료될 때도 스키마를 drop 한다.
+          #validate : 데이터베이스 스키마를 검증 한다.
+          #update : 데이터베이스 스키마를 갱신 한다.
+        implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    open-in-view: false # OSIV(Open-Session-In-View)라고 하고, 경우에 따라 Open-EntityManager-In-View 라고도 한다.
+    show-sql: true

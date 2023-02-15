@@ -1,4 +1,4 @@
-package com.bbringworld.ezparkapi.global.domain;
+package com.bbringworld.ezparkapi.global.domain.dao;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@NoArgsConstructor(access = AccessLevel.MODULE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public abstract class Registration {
 
     @Column(nullable = false, updatable = false, name = "created_at")
@@ -30,5 +30,4 @@ public abstract class Registration {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
 }

@@ -1,6 +1,8 @@
 spring:
   profiles:
     active: local
+  application:
+    name: ez-park-api
 
 jasypt:
   encryptor:
