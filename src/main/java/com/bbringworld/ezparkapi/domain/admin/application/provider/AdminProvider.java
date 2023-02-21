@@ -2,6 +2,7 @@ package com.bbringworld.ezparkapi.domain.admin.application.provider;
 
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 import com.bbringworld.ezparkapi.domain.admin.dao.repository.AdminRepository;
+import com.bbringworld.ezparkapi.domain.admin.exception.AdminNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,10 @@ public class AdminProvider {
 
     public Optional<Admin> findById(Long id) {
         return repository.findById(id);
+    }
+
+    public Admin getById(Long id) {
+        return findById(id).orElseThrow(AdminNotFoundException::new);
     }
 
 }
