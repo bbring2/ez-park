@@ -13,6 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -44,11 +47,11 @@ public class Membership {
     @Column(name = "mobile_code")
     private String mobileCode;
 
-    @Column(name = "start_date")
-    private String startDate;
+    @Column(name = "start_date", columnDefinition = "VARCHAR(45)")
+    private LocalDate startDate;
 
-    @Column(name = "end_date")
-    private String endDate;
+    @Column(name = "end_date", columnDefinition = "VARCHAR(45)")
+    private LocalDate endDate;
 
     @Column(name = "card_number")
     private String cardNumber;
@@ -62,4 +65,21 @@ public class Membership {
 
     @Column(columnDefinition = "TINYINT(1)")
     private boolean status;
+
+    public void unsubscribe() {
+        this.status = false;
+    }
+
+    public boolean checkDate() {
+        return endDate.isAfter(LocalDate.now());
+    }
+
+    public boolean matchCode(String code) {
+        return code.equals(mobileCode);
+    }
+
+    public String getGender() {
+        return this.gender.getDisplayName();
+    }
+
 }
