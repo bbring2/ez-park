@@ -1,9 +1,20 @@
 package com.bbringworld.ezparkapi.domain.coupon.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+@ResponseStatus(HttpStatus.BAD_REQUEST)
 public class ExpiredCouponException extends RuntimeException {
+
+    public ExpiredCouponException() {
+
+    }
 
     public ExpiredCouponException(String message) {
         super(message);
+    }
+
+    public ExpiredCouponException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

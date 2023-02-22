@@ -10,4 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("admin_log")
 public class AdminLog extends Registration {
 
+    private String id;
+
+    private Admin admin;
+
 }

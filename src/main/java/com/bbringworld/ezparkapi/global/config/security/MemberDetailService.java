@@ -1,6 +1,7 @@
 package com.bbringworld.ezparkapi.global.config.security;
 
 import com.bbringworld.ezparkapi.domain.admin.application.provider.AdminProvider;
+import com.bbringworld.ezparkapi.domain.admin.application.service.AdminService;
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -14,16 +15,16 @@ import java.util.Optional;
 @Component
 public class MemberDetailService implements UserDetailsService {
 
-    private final AdminProvider adminProvider;
+    private final AdminService adminService;
 
     @Autowired
-    public MemberDetailService(AdminProvider adminProvider) {
-        this.adminProvider = adminProvider;
+    public MemberDetailService(AdminService adminService) {
+        this.adminService = adminService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String nickname) throws UsernameNotFoundException {
-        Optional<Admin> findOne = adminProvider.findOne(nickname);
+        Optional<Admin> findOne = adminService.findAdminByNickname(nickname);
         Admin admin = findOne.orElseThrow(() -> new UsernameNotFoundException("This admin doesn't exist!"));
 
         return User.builder()
