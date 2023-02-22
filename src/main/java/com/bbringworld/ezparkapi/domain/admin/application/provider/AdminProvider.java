@@ -1,28 +1,20 @@
 package com.bbringworld.ezparkapi.domain.admin.application.provider;
 
+import com.bbringworld.ezparkapi.domain.admin.adaptor.in.AdminUpdate;
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
-import com.bbringworld.ezparkapi.domain.admin.dao.repository.AdminRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component
-public class AdminProvider {
+public interface AdminProvider {
 
-    private final AdminRepository repository;
+    boolean existAdminByNickname(String nickname);
 
-    @Autowired
-    public AdminProvider(AdminRepository repository) {
-        this.repository = repository;
-    }
+    Optional<Admin> findAdminByNickname(String nickname);
 
-    public Optional<Admin> findOne(String nickname) {
-        return repository.findByNickname(nickname);
-    }
+    Admin findAdminById(long id);
 
-    public Optional<Admin> findById(Long id) {
-        return repository.findById(id);
-    }
+    boolean existAdminByMobile(String mobile, boolean verified);
+
+    void updateAdminProfile(Admin admin, AdminUpdate update);
 
 }

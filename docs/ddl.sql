@@ -6,6 +6,7 @@ CREATE TABLE `ezpark`.`admin` (
                                   `role` VARCHAR(20) NOT NULL,
                                   `password` VARCHAR(512) NOT NULL,
                                   `mobile` VARCHAR(20) NOT NULL,
+                                  `mobile_code` VARCHAR(10) DEFAULT 123456,
                                   `mobile_verified` TINYINT(1) UNSIGNED NOT NULL,
                                   `status` TINYINT(1) UNSIGNED NOT NULL,
                                   `last_login_at` DATETIME NULL,

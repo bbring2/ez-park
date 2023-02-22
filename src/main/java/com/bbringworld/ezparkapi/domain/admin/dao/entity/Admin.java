@@ -20,9 +20,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Builder
-@Table(name = "admin")
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "admin")
 public class Admin extends Registration {
 
     @Id
@@ -48,6 +48,9 @@ public class Admin extends Registration {
     @Column
     private String mobile;
 
+    @Column(name = "mobile_code")
+    private String mobileCode;
+
     @Column(name = "mobile_verified", columnDefinition = "TINYINT(1)")
     private boolean mobileVerified;
 
@@ -57,16 +60,8 @@ public class Admin extends Registration {
     @Column(name = "last_login_at")
     private LocalDateTime lastLoginAt;
 
-    @Builder
-    public Admin(String firstName, String lastName, String nickname, String password, String mobile) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.nickname = nickname;
-        this.role = Role.SUPER_ADMIN;
-        this.password = password;
-        this.mobile = mobile;
-        this.mobileVerified = false;
-        this.status = false;
+    public boolean checkMobileCode(String code) {
+        return code.equals(mobileCode);
     }
 
 }
