@@ -27,10 +27,10 @@ public class Coupon extends Registration {
     @Column
     private Integer rate;
 
-    @Column(name = "issued_date", columnDefinition = "VARCHAR(20)")
+    @Column(name = "issued_date")
     private LocalDate issuedDate;
 
-    @Column(name = "issued_date", columnDefinition = "VARCHAR(20)")
+    @Column(name = "expired_date")
     private LocalDate expiredDate;
 
     @Column(columnDefinition = "TINYINT(1)")
