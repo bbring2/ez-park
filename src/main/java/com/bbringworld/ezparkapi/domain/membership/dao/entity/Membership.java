@@ -47,10 +47,10 @@ public class Membership {
     @Column(name = "mobile_code")
     private String mobileCode;
 
-    @Column(name = "start_date")
+    @Column(name = "start_date", columnDefinition = "VARCHAR(45)")
     private LocalDate startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "end_date", columnDefinition = "VARCHAR(45)")
     private LocalDate endDate;
 
     @Column(name = "card_number")
