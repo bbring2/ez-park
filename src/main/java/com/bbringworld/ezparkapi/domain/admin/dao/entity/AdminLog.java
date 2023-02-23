@@ -14,4 +14,16 @@ public class AdminLog extends Registration {
 
     private Admin admin;
 
+    private String requestUrl;
+
+    private Integer requestTtl;
+
+    private String requestMethod;
+
+    private Integer responseCode;
+
+    private String responseBody;
+
+    private String ipAddress;
+
 }
