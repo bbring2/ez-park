@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Builder
 @Document("admin_log")
