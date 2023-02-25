@@ -6,6 +6,11 @@
 - Spring boot 3.0.2
 - MySQL 
 - MongoDB
+- JPA / Querydsl
+
+## Strategy for DB
+- Primary key has been assigned automatically with IDENTITY strategy, and delegated to make PK to database(MySQL), following `AUTO_INCREMENT` function.
+- Logs will be stored on NoSQL(MongoDB), and other data will be stored on RDBMS(MySQL). 
 
 ## Endpoints
 | Method       | URI                              | Description    |
