@@ -14,3 +14,8 @@ spring:
     url: ENC(tWGA5AwA7zfo1sZnICWevhAA2lgnZ4cuUlePoiOY2ArQwYvfhQZOH3+quVDme9HKbtCdtDIqkRH33i5QVWLXL8iWJioa89tu)
     username: ENC(SJ+4G8Ju8tZmohXqlWzdxA==)
     password: ENC(sXGEffanhDIwEMMmz3YgdQrOnYwxjfqn)
+
+ezpark:
+  auth:
+    token-expiry: 72400
+    token-secret: ez-park-api-token-secret
