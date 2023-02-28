@@ -18,4 +18,3 @@ spring:
 ezpark:
   auth:
     token-expiry: 72400
-    token-secret: ez-park-api-token-secret
