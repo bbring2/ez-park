@@ -1,19 +1,15 @@
 package com.bbringworld.ezparkapi.domain.auth.application.service;
 
-import com.bbringworld.ezparkapi.domain.admin.application.provider.AdminProvider;
-import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
-import jakarta.servlet.http.HttpSession;
+import com.bbringworld.ezparkapi.domain.admin.application.service.AdminService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LoginService {
 
-    private final HttpSession session;
-
-    private final AdminProvider provider;
-
-    private final String ADMIN_PROPERTY = "ADMIN_ID";
+    private final AdminService service;
 
 }

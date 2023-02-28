@@ -1,6 +1,5 @@
 package com.bbringworld.ezparkapi.global.config.security;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private static final String[] WHITE_LIST = {"/", "/guest/**", "/auth/**"};
+    private static final String[] WHITE_LIST = {"/", "/guest/**", "/auth/**", "/images/**"};
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -23,12 +22,12 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain config(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+                .csrf().disable()
+                .cors().disable()
                 .authorizeHttpRequests(authorize -> authorize
-                        .shouldFilterAllDispatcherTypes(false)
-                        .requestMatchers(WHITE_LIST)
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated())
+                        .requestMatchers(WHITE_LIST).permitAll()
+                        .requestMatchers("/api/v2/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
                 .build();
     }
 }

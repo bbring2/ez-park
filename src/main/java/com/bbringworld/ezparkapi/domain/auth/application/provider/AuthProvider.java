@@ -1,14 +1,15 @@
 package com.bbringworld.ezparkapi.domain.auth.application.provider;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import com.bbringworld.ezparkapi.domain.admin.adaptor.in.AdminRegistry;
+import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
+import com.bbringworld.ezparkapi.domain.membership.dao.entity.Membership;
 
-@Slf4j
-@Component
-public class AuthProvider {
+public interface AuthProvider {
 
-    @Value("${ezpark.auth.token-expiry}")
-    private String validTime;
+    void signupAsAdmin(Admin admin);
+
+    void signupAsMembership(Membership membership);
+
+    long login(String nickname);
 
 }

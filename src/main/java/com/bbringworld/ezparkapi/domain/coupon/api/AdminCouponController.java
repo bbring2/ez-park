@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +36,7 @@ public class AdminCouponController {
     @PatchMapping(value = "/{id}")
     public ResponseEntity<CouponInfo> update(@Valid @PathVariable ("id") Long id,
                                              @RequestBody CouponUpdate request) {
-        return ResponseEntity.ok(new CouponInfo());
+        return ResponseEntity.ok(CouponInfo.builder().build());
     }
 
 }

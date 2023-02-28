@@ -2,29 +2,24 @@ package com.bbringworld.ezparkapi.domain.coupon.adaptor.in;
 
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 import com.bbringworld.ezparkapi.domain.coupon.dao.entity.Coupon;
+import com.bbringworld.ezparkapi.global.util.DateUtil;
 import com.bbringworld.ezparkapi.global.util.StringUtil;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
 
-import java.time.LocalDate;
-
-@Getter
 @Builder
-@ToString
-public class CouponRegistry {
+public record CouponRegistry(long adminId, String rate, String issuedDate, String expiredDate) {
 
-    private final long adminId;
-
-    private final String rate;
-
-    private final LocalDate issuedDate;
-
-    private final LocalDate expiredDate;
 
     public static Coupon toEntity(Admin admin, CouponRegistry request) {
         return Coupon.builder()
-//                .code(StringUtil)
+                .code(StringUtil.makeCode())
+                .rate(Integer.parseInt(request.rate))
+                .issuedDate(DateUtil.strToLdt(request.issuedDate))
+                .expiredDate(DateUtil.strToLdt(request.expiredDate))
+                .status(true)
+                .createdBy(admin.getNickname())
+                .updatedBy("")
                 .build();
     }
 

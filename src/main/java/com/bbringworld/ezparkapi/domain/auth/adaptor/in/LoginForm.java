@@ -1,15 +1,6 @@
 package com.bbringworld.ezparkapi.domain.auth.adaptor.in;
 
-import jakarta.validation.constraints.NotEmpty;
-import lombok.Getter;
+import jakarta.validation.constraints.NotBlank;
 
-@Getter
-public class LoginForm {
-
-    @NotEmpty
-    private String nickname;
-
-    @NotEmpty
-    private String password;
-
+public record LoginForm(@NotBlank String nickname, @NotBlank String password) {
 }

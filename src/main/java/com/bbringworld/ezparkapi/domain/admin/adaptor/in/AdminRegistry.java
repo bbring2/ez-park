@@ -1,36 +1,29 @@
 package com.bbringworld.ezparkapi.domain.admin.adaptor.in;
 
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Getter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class AdminRegistry {
+public record AdminRegistry (
+        @NotBlank
+        String firstName,
 
-    @NotEmpty
-    private String firstName;
+        @NotBlank
+        String lastName,
 
-    @NotEmpty
-    private String lastName;
+        @NotBlank
+        String nickname,
 
-    @NotEmpty
-    private String nickname;
+        @NotBlank
+        @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!~$%^&-+=()])(?=\\S+$).{8,16}$")
+        String password,
 
-    @NotEmpty
-    @Pattern(message = "최소 한개 이상의 대소문자와 숫자, 특수문자를 포함한 8자 이상 16자 이하의 비밀번호를 입력해야 합니다.",
-            regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!~$%^&-+=()])(?=\\S+$).{8,16}$")
-    private String password;
-
-    @NotEmpty
-    private String mobile;
+        @NotBlank
+        String mobile
+) {
 
     public static Admin toEntity(AdminRegistry in, PasswordEncoder passwordEncoder) {
         return Admin.builder()
@@ -41,4 +34,5 @@ public class AdminRegistry {
                 .mobile(in.mobile)
                 .build();
     }
+
 }
