@@ -40,13 +40,8 @@ spring:
       #Connection.TRANSACTION_SERIALIZABLE : dirty read를 지원하고, non-repeatable read를 지원한다
       #기본값을 각 Driver vendor의 JDBCDriver에서 지원하는 Transaction Isoluation을 따라간다. (none으로 설정시)
       transaction-isolation: TRANSACTION_READ_UNCOMMITTED
-      # 이 옵션은 사용자가 pool의 이름을 지정함
       #logging이나 JMX management console에 표시되는 이름
       pool-name: pool-ezpark
-
-
-
-
       jpa:
         database-platform: org.hibernate.dialect.MariaDB103Dialect
         properties:
