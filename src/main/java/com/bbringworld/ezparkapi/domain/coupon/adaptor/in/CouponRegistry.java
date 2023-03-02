@@ -4,7 +4,6 @@ import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 import com.bbringworld.ezparkapi.domain.coupon.dao.entity.Coupon;
 import com.bbringworld.ezparkapi.global.util.DateUtil;
 import com.bbringworld.ezparkapi.global.util.StringUtil;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 @Builder

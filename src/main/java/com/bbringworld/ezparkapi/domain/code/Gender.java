@@ -1,6 +1,7 @@
 package com.bbringworld.ezparkapi.domain.code;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
@@ -12,4 +13,5 @@ public enum Gender {
     NA("not answer");
 
     private final String displayName;
+
 }

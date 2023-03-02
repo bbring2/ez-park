@@ -26,12 +26,12 @@ public class AdminController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<AdminInfo> search(@Valid  @PathVariable ("id") Long id) {
-        return ResponseEntity.ok(new AdminInfo());
+        return ResponseEntity.ok(AdminInfo.builder().build());
     }
 
     @PatchMapping(value = "/{id}")
     public ResponseEntity<AdminInfo> update(@Valid @PathVariable ("id") Long id, @RequestBody AdminUpdate request) {
-        return ResponseEntity.ok(new AdminInfo());
+        return ResponseEntity.ok(AdminInfo.builder().build());
     }
 
     @DeleteMapping(value = "/{id}")
@@ -42,7 +42,7 @@ public class AdminController {
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     @GetMapping(value = "/list-up")
     public ResponseEntity<List<AdminInfo>> fetch() {
-        return ResponseEntity.ok(List.of(new AdminInfo()));
+        return ResponseEntity.ok(List.of(AdminInfo.builder().build()));
     }
 
 }

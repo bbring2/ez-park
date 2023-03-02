@@ -1,6 +1,7 @@
 package com.bbringworld.ezparkapi.domain.membership.dao.entity;
 
 import com.bbringworld.ezparkapi.domain.code.Gender;
+import com.bbringworld.ezparkapi.global.domain.dao.Registration;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,7 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 
@@ -23,7 +23,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "membership")
-public class Membership {
+public class Membership extends Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
