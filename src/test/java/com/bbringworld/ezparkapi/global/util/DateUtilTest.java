@@ -19,4 +19,11 @@ class DateUtilTest {
     void ld_to_str() {
         System.out.println(DateUtil.ldToStr(LocalDate.of(2022,1,3)));
     }
+
+    @Test
+    void create() {
+        DateUtil dateUtil = new DateUtil();
+        assertNotNull(dateUtil);
+    }
+
 }
