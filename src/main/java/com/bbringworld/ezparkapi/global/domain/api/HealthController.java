@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-@CrossOrigin("http://localhost:8881")
 public class HealthController {
 
     @GetMapping("/hello")
