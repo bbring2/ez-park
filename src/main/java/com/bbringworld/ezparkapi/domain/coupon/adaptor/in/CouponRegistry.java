@@ -10,13 +10,12 @@ import lombok.Builder;
 @Builder
 public record CouponRegistry(long adminId, String rate, String issuedDate, String expiredDate) {
 
-
     public static Coupon toEntity(Admin admin, CouponRegistry request) {
         return Coupon.builder()
                 .code(StringUtil.makeCode())
                 .rate(Integer.parseInt(request.rate))
-                .issuedDate(DateUtil.strToLdt(request.issuedDate))
-                .expiredDate(DateUtil.strToLdt(request.expiredDate))
+                .issuedDate(DateUtil.strToLd(request.issuedDate))
+                .expiredDate(DateUtil.strToLd(request.expiredDate))
                 .status(true)
                 .createdBy(admin.getNickname())
                 .updatedBy("")
