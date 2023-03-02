@@ -37,7 +37,7 @@ public class AdminCouponController {
     @PatchMapping(value = "/{id}")
     public ResponseEntity<CouponInfo> update(@Valid @PathVariable ("id") Long id,
                                              @RequestBody CouponUpdate request) {
-        return ResponseEntity.ok(new CouponInfo());
+        return ResponseEntity.ok(CouponInfo.builder().build());
     }
 
 }

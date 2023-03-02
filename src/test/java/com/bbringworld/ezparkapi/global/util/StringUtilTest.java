@@ -15,4 +15,9 @@ class StringUtilTest {
         Assertions.isTrue(result, result.length() == 10);
     }
 
+    @Test
+    void check_mobile_code() {
+        System.out.println(StringUtil.makeCode());
+    }
+
 }

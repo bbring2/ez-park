@@ -21,12 +21,12 @@ public class CouponController {
 
     @GetMapping
     public ResponseEntity<CouponInfo> search(@Valid @RequestParam ("code") String code) {
-        return ResponseEntity.ok(new CouponInfo());
+        return ResponseEntity.ok(CouponInfo.builder().build());
     }
 
     @PatchMapping(value = "/{id}")
     public ResponseEntity<CouponInfo> use(@Valid @PathVariable ("id") Long id) {
-        return ResponseEntity.ok(new CouponInfo());
+        return ResponseEntity.ok(CouponInfo.builder().build());
     }
 
 }
