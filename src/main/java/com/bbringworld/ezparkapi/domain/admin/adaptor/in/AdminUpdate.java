@@ -1,13 +1,12 @@
 package com.bbringworld.ezparkapi.domain.admin.adaptor.in;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import jakarta.annotation.Nullable;
 
-@Getter
-@Builder
-@RequiredArgsConstructor
-public class AdminUpdate {
+public record AdminUpdate (
+        @Nullable String firstName,
 
+        @Nullable String lastName,
 
+        @Nullable String mobile
+) {
 }
