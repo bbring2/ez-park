@@ -27,6 +27,9 @@ public class Spot extends Registration {
     @Enumerated(EnumType.STRING)
     private Floor floor;
 
+    @Column
+    private String price;
+
     @Column(columnDefinition = "TINYINT(1)")
     private boolean status;
 
