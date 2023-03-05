@@ -29,7 +29,7 @@ public class Spot extends Registration {
 
     @Column
     private String price;
-
+    
     @Column(columnDefinition = "TINYINT(1)")
     private boolean status;
 
