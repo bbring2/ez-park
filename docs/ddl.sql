@@ -33,7 +33,8 @@ CREATE TABLE `ezpark`.`spot` (
                                        `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
                                        `name` VARCHAR(100) NOT NULL,
                                        `status` TINYINT(1) UNSIGNED NOT NULL,
-                                       `floor` VARCHAR
+                                       `floor` VARCHAR(10) NOT NULL,
+                                       `price` VARCHAR(45) NOT NULL,
                                        `created_at` DATETIME NOT NULL,
                                        `updated_at` DATETIME NULL,
                                        PRIMARY KEY (`id`));
