@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.0.2'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id "org.asciidoctor.jvm.convert" version "3.3.2"
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 group = 'com.bbringworld'
@@ -11,6 +12,9 @@ sourceCompatibility = '17'
 
 configurations {
     asciidoctorExt
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
@@ -32,7 +36,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'mysql:mysql-connector-java:8.0.32'
-    implementation 'com.querydsl:querydsl-jpa'
+//    implementation 'com.querydsl:querydsl-jpa'
+
+    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+    annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
@@ -50,6 +57,25 @@ ext {
 
 test {
     outputs.dir snippetsDir
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
 }
 
 asciidoctor {
