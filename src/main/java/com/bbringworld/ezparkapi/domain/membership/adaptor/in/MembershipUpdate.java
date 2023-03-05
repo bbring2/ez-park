@@ -1,11 +1,13 @@
 package com.bbringworld.ezparkapi.domain.membership.adaptor.in;
 
+import jakarta.annotation.Nullable;
+
 public record MembershipUpdate (
-        String nickname,
-        String carNumber,
-        String mobile,
-        String cardNumber,
-        String bod,
-        String gender
+        @Nullable String nickname,
+        @Nullable String carNumber,
+        @Nullable String mobile,
+        @Nullable String cardNumber,
+        @Nullable String bod,
+        @Nullable String gender
 ){
 }
