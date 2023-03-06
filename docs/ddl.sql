@@ -93,4 +93,17 @@ CREATE TABLE `ezpark`.`guest_log` (
                                    PRIMARY KEY (`id`),
                                    UNIQUE INDEX `code_UNIQUE` (`code` ASC) VISIBLE);
 
+CREATE TABLE `ezpark`.`payment_log` (
+                                        `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                        `car_number` VARCHAR(45) NOT NULL,
+                                        `is_membership` TINYINT(1) NOT NULL,
+                                        `discounted` TINYINT(1) NOT NULL,
+                                        `origin_amount` VARCHAR(45) NULL,
+                                        `total_amount` VARCHAR(45) NOT NULL,
+                                        `card_digit` VARCHAR(10) NOT NULL,
+                                        `card_cmpny` VARCHAR(45) NOT NULL,
+                                        `status` VARCHAR(10) NOT NULL,
+                                        `created_at` DATETIME NOT NULL,
+                                        `updated_at` DATETIME NULL,
+                                        PRIMARY KEY (`id`));
 
