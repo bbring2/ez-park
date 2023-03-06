@@ -72,3 +72,25 @@ CREATE TABLE `ezpark`.`coupon` (
                                    PRIMARY KEY (`id`),
                                    UNIQUE INDEX `code_UNIQUE` (`code` ASC) VISIBLE);
 
+CREATE TABLE `ezpark`.`guest_log` (
+                                   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                   `spot_id` BIGINT UNSIGNED NOT NULL,
+                                   `status` VARCHAR(10) NOT NULL DEFAULT 'PROCESS',
+                                   `car_number` VARCHAR(10) NOT NULL DEFAULT 'NL AS9527XZ',
+                                   `in_time` VARCHAR(100) NOT NULL DEFAULT '2022-04-09 at 12:50:51 UTC',
+                                   `out_time` VARCHAR(100) NULL DEFAULT '2022-04-09 at 14:50:51 UTC',
+                                   `total_minute` INT NULL,
+                                   `origin_price` VARCHAR(45) NULL DEFAULT '120',
+                                   `card_digits` VARCHAR(10) NULL,
+                                   `card_company` VARCHAR(45) NULL DEFAULT 'AMEX',
+                                   `discounted` TINYINT(1) NULL DEFAULT '1',
+                                   `discounted_price` VARCHAR(45) NULL DEFAULT 'gildong12',
+                                   `total_price` VARCHAR(45) NULL DEFAULT 'gildong12',
+                                   `coupon_code` VARCHAR(45) NULL DEFAULT 'gildong12',
+                                   `printed` VARCHAR(45) NULL DEFAULT 'gildong12',
+                                   `created_at` VARCHAR(45) NULL DEFAULT 'gildong12',
+                                   `updated_at` VARCHAR(45) NULL DEFAULT 'gildong12',
+                                   PRIMARY KEY (`id`),
+                                   UNIQUE INDEX `code_UNIQUE` (`code` ASC) VISIBLE);
+
+

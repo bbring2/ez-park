@@ -3,6 +3,7 @@ package com.bbringworld.ezparkapi.domain.admin.application.provider;
 import com.bbringworld.ezparkapi.domain.admin.adaptor.in.AdminUpdate;
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface AdminProvider {
@@ -15,6 +16,6 @@ public interface AdminProvider {
 
     boolean existAdminByMobile(String mobile, boolean verified);
 
-    void updateAdminProfile(Admin admin, AdminUpdate update);
+    void updateAdminProfile(long id, AdminUpdate update);
 
 }
