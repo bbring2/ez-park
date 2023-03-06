@@ -3,6 +3,7 @@ package com.bbringworld.ezparkapi.domain.spot.dao.entity;
 import com.bbringworld.ezparkapi.domain.code.Floor;
 import com.bbringworld.ezparkapi.global.domain.dao.Registration;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,8 +13,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "spot")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Spot extends Registration {
 
     @Id

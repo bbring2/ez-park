@@ -2,6 +2,7 @@ package com.bbringworld.ezparkapi.domain.coupon.dao.entity;
 
 import com.bbringworld.ezparkapi.global.domain.dao.Registration;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,8 +14,8 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "coupon")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Coupon extends Registration {
 
     @Id
