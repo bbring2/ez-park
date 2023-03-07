@@ -107,3 +107,30 @@ CREATE TABLE `ezpark`.`payment_log` (
                                         `updated_at` DATETIME NULL,
                                         PRIMARY KEY (`id`));
 
+CREATE TABLE `ezpark`.`review` (
+                                   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                   `car_number` BIGINT NOT NULL,
+                                   `content` VARCHAR(500) NOT NULL,
+                                   `score` INT UNSIGNED NOT NULL,
+                                   `recommend` TINYINT(1) NOT NULL,
+                                   `created_at` DATETIME NOT NULL,
+                                   `updated_at` DATETIME NULL,
+                                   PRIMARY KEY (`id`));
+
+CREATE TABLE `ezpark`.`review_image` (
+                                         `id` BIGINT NOT NULL,
+                                         `review_id` BIGINT NOT NULL,
+                                         `image_list` VARCHAR(512) NOT NULL,
+                                         `created_at` DATETIME NOT NULL,
+                                         `updated_at` DATETIME NULL,
+                                         PRIMARY KEY (`id`));
+
+CREATE TABLE `ezpark`.`review_list` (
+                                        `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                        `name` VARCHAR(100) NOT NULL,
+                                        `icon` VARCHAR(512) NOT NULL,
+                                        `positive` TINYINT(1) NOT NULL,
+                                        `active` TINYINT(1) NOT NULL,
+                                        `created_at` DATETIME NOT NULL,
+                                        `updated_at` DATETIME NULL,
+                                        PRIMARY KEY (`id`));
