@@ -134,4 +134,3 @@ CREATE TABLE `ezpark`.`review_list` (
                                         `created_at` DATETIME NOT NULL,
                                         `updated_at` DATETIME NULL,
                                         PRIMARY KEY (`id`));
-
