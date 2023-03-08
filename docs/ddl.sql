@@ -120,7 +120,7 @@ CREATE TABLE `ezpark`.`review` (
 CREATE TABLE `ezpark`.`review_image` (
                                          `id` BIGINT NOT NULL,
                                          `review_id` BIGINT NOT NULL,
-                                         `image_list` VARCHAR(512) NOT NULL,
+                                         `image_url` VARCHAR(512) NOT NULL,
                                          `created_at` DATETIME NOT NULL,
                                          `updated_at` DATETIME NULL,
                                          PRIMARY KEY (`id`));
@@ -134,3 +134,11 @@ CREATE TABLE `ezpark`.`review_list` (
                                         `created_at` DATETIME NOT NULL,
                                         `updated_at` DATETIME NULL,
                                         PRIMARY KEY (`id`));
+
+CREATE TABLE `ezpark`.`review_sub` (
+                                       `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                       `review_id` BIGINT UNSIGNED NOT NULL,
+                                       `list_id` BIGINT UNSIGNED NOT NULL,
+                                       `created_at` DATETIME NOT NULL,
+                                       `updated_at` DATETIME NULL,
+                                       PRIMARY KEY (`id`));

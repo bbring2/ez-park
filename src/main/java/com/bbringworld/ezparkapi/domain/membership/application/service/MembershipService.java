@@ -3,7 +3,9 @@ package com.bbringworld.ezparkapi.domain.membership.application.service;
 import com.bbringworld.ezparkapi.domain.membership.adaptor.in.MemberRegistry;
 import com.bbringworld.ezparkapi.domain.membership.adaptor.out.MembershipInfo;
 import com.bbringworld.ezparkapi.domain.membership.application.provider.MembershipProvider;
+import com.bbringworld.ezparkapi.domain.membership.dao.entity.Membership;
 import com.bbringworld.ezparkapi.domain.membership.dao.repository.MembershipRepository;
+import com.bbringworld.ezparkapi.domain.membership.exception.MembershipNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -20,10 +22,17 @@ public class MembershipService implements MembershipProvider {
 
     private final MembershipRepository repository;
 
+    public Membership getById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(MembershipNotFoundException::new);
+    }
+
+    public Membership save(Membership membership) {
+        return repository.save(membership);
+    }
 
     @Override
     public void register(MemberRegistry registry) {
-
     }
 
     @Override

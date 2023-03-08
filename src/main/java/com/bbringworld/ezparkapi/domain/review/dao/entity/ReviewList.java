@@ -17,24 +17,24 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @AllArgsConstructor
-@Table(name = "review")
+@Table(name = "review_list")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Review extends Registration {
+public class ReviewList extends Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "car_number")
-    private String carNumber;
+    @Column
+    private String name;
 
     @Column
-    private String content;
-
-    @Column
-    private Integer score;
+    private String icon;
 
     @Column(columnDefinition = "TINYINT(1)")
-    private boolean recommend;
+    private boolean positive;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean active;
 
 }
