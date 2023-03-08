@@ -1,4 +1,7 @@
 package com.bbringworld.ezparkapi.domain.review.dao.repository;
 
-public interface ReviewRepository {
+import com.bbringworld.ezparkapi.domain.review.dao.entity.Review;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 }

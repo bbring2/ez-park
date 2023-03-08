@@ -31,12 +31,12 @@ public class AdminService implements AdminProvider {
     }
 
     @Override
-    public Optional<Admin> findAdminByNickname(String nickname) {
+    public Optional<Admin> findById(String nickname) {
         return repository.findByNickname(nickname);
     }
 
     @Override
-    public Admin findAdminById(long id) {
+    public Admin getById(long id) {
         return repository.findById(id)
                 .orElseThrow(AdminNotFoundException::new);
     }

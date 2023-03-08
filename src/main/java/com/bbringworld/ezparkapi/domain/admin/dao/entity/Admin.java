@@ -1,5 +1,6 @@
 package com.bbringworld.ezparkapi.domain.admin.dao.entity;
 
+import com.bbringworld.ezparkapi.domain.admin.exception.UnauthorizedAdminException;
 import com.bbringworld.ezparkapi.domain.code.Role;
 import com.bbringworld.ezparkapi.global.domain.dao.Registration;
 import jakarta.persistence.Column;
@@ -63,6 +64,12 @@ public class Admin extends Registration {
 
     public boolean checkMobileCode(String code) {
         return code.equals(mobileCode);
+    }
+
+    public void checkAdmin() {
+        if(!this.status) {
+            throw new UnauthorizedAdminException();
+        }
     }
 
 }
