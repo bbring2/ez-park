@@ -40,7 +40,7 @@ public class SpotService implements SpotProvider {
     }
 
     public void register(SpotRegistry registry) {
-        Admin admin = adminService.findAdminById(registry.adminId());
+        Admin admin = adminService.getById(registry.adminId());
 
         Spot spot = SpotRegistry.toEntity(registry);
 

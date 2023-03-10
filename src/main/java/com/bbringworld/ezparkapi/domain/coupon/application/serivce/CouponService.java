@@ -3,9 +3,11 @@ package com.bbringworld.ezparkapi.domain.coupon.application.serivce;
 import com.bbringworld.ezparkapi.domain.admin.application.service.AdminService;
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 import com.bbringworld.ezparkapi.domain.coupon.adaptor.in.CouponRegistry;
+import com.bbringworld.ezparkapi.domain.coupon.adaptor.out.CouponInfo;
 import com.bbringworld.ezparkapi.domain.coupon.application.provider.CouponProvider;
 import com.bbringworld.ezparkapi.domain.coupon.dao.entity.Coupon;
 import com.bbringworld.ezparkapi.domain.coupon.dao.repository.CouponRepository;
+import com.bbringworld.ezparkapi.domain.coupon.dao.repository.CouponRepositorySupport;
 import com.bbringworld.ezparkapi.domain.coupon.exception.CouponNotFoundException;
 import com.bbringworld.ezparkapi.domain.coupon.exception.ExpiredCouponException;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -22,6 +26,8 @@ public class CouponService implements CouponProvider {
     private final CouponRepository repository;
 
     private final AdminService adminService;
+
+    private final CouponRepositorySupport repositorySupport;
 
     public Coupon save(Coupon coupon) {
         return repository.save(coupon);
@@ -37,9 +43,16 @@ public class CouponService implements CouponProvider {
                 .orElseThrow(() -> new CouponNotFoundException("Doesn't exist this coupon."));
     }
 
+    public List<CouponInfo> findValidCoupons() {
+        return repositorySupport.findByIssuedDateAndExpiredDate()
+                .stream()
+                .map(CouponInfo::of)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public void create(CouponRegistry registry) {
-        Admin admin = adminService.findAdminById(registry.adminId());
+        Admin admin = adminService.getById(registry.adminId());
 
         Coupon coupon = CouponRegistry.toEntity(admin, registry);
 
