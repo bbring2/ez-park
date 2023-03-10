@@ -10,8 +10,6 @@ public interface AdminProvider {
 
     boolean existAdminByNickname(String nickname);
 
-    Optional<Admin> findById(String nickname);
-
     Admin getById(long id);
 
     boolean existAdminByMobile(String mobile, boolean verified);

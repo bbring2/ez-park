@@ -10,8 +10,6 @@ public interface AdminRepository extends JpaRepository<Admin, Long> {
 
     Optional<Admin> findByNickname(String nickname);
 
-    List<Admin> findAllByStatusTrue();
-
-    boolean existsByNicknameAndStatusFalse(String nickname);
+    boolean existsByNickname(String nickname);
 
 }

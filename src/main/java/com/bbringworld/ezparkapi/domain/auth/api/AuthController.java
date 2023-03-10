@@ -1,4 +1,4 @@
-package com.bbringworld.ezparkapi.domain.admin.api;
+package com.bbringworld.ezparkapi.domain.auth.api;
 
 import com.bbringworld.ezparkapi.domain.admin.adaptor.out.AdminInfo;
 import com.bbringworld.ezparkapi.domain.auth.adaptor.in.LoginForm;

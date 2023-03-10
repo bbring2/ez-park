@@ -24,7 +24,7 @@ public class MemberDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String nickname) throws UsernameNotFoundException {
-        Optional<Admin> findOne = adminService.findAdminByNickname(nickname);
+        Optional<Admin> findOne = adminService.findByNickname(nickname);
         Admin admin = findOne.orElseThrow(() -> new UsernameNotFoundException("This admin doesn't exist!"));
 
         return User.builder()
