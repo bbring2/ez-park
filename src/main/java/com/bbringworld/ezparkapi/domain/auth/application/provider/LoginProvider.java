@@ -1,6 +1,8 @@
 package com.bbringworld.ezparkapi.domain.auth.application.provider;
 
-public interface LoginProvider {
+import com.bbringworld.ezparkapi.domain.auth.adaptor.in.LoginForm;
 
+public interface LoginProvider {
+    long login(LoginForm form);
 
 }
