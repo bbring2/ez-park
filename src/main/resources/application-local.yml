@@ -15,6 +15,10 @@ spring:
     username: ENC(SJ+4G8Ju8tZmohXqlWzdxA==)
     password: ENC(sXGEffanhDIwEMMmz3YgdQrOnYwxjfqn)
 
-jwt:
-  header: Authorization
-  secret: ENC(BgK14sI6xXaAB+dRJCpYympbiuKsXdo5+vdXUVtAYdcRN2HNEtlM1X5ZE6zE72PDOiEr+9/LdNbP74HgMZOpQIhDuVdhS5Slq89B7Xubfho8GBgr+4SOVA==)
+biz:
+  jwt:
+    issuer: api.ez-pakr.xyz
+    header: Authorization
+    secret: ENC(BgK14sI6xXaAB+dRJCpYympbiuKsXdo5+vdXUVtAYdcRN2HNEtlM1X5ZE6zE72PDOiEr+9/LdNbP74HgMZOpQIhDuVdhS5Slq89B7Xubfho8GBgr+4SOVA==)
+    expired: 5256000
+    refresh-expired: 5256000
