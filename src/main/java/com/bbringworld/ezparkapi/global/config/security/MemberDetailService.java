@@ -1,26 +1,25 @@
 package com.bbringworld.ezparkapi.global.config.security;
 
-import com.bbringworld.ezparkapi.domain.admin.application.provider.AdminProvider;
 import com.bbringworld.ezparkapi.domain.admin.application.service.AdminService;
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bbringworld.ezparkapi.domain.admin.exception.AdminNotFoundException;
+import com.bbringworld.ezparkapi.domain.auth.exception.UnauthorizedException;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Component
+@Slf4j
+@Service
+@RequiredArgsConstructor
 public class MemberDetailService implements UserDetailsService {
 
     private final AdminService adminService;
-
-    @Autowired
-    public MemberDetailService(AdminService adminService) {
-        this.adminService = adminService;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String nickname) throws UsernameNotFoundException {
@@ -32,5 +31,17 @@ public class MemberDetailService implements UserDetailsService {
                 .password(admin.getPassword())
                 .roles(admin.getRole().getDisplayName())
                 .build();
+    }
+
+    public CustomUserDetails processLogin(Optional<Admin> admin) throws UsernameNotFoundException {
+        if (!admin.isPresent()) {
+            throw new AdminNotFoundException("Cannot find the info of an admin!");
+        }
+
+        if (!admin.get().isStatus()) {
+            throw new UnauthorizedException();
+        }
+
+        return CustomUserDetails.create(admin.get());
     }
 }
