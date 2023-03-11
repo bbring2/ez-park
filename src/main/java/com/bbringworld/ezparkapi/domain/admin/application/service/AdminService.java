@@ -55,6 +55,11 @@ public class AdminService implements AdminProvider {
         return repositorySupport.findAdminByNickName(nickname);
     }
 
+    public Admin getByNickname(String nickname) {
+        return findByNickname(nickname)
+                .orElseThrow(AdminNotFoundException::new);
+    }
+
     public List<AdminInfo> of(List<Admin> adminEntityList) {
         return adminEntityList
                 .stream()
