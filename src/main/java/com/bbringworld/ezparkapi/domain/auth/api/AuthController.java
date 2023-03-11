@@ -2,6 +2,7 @@ package com.bbringworld.ezparkapi.domain.auth.api;
 
 import com.bbringworld.ezparkapi.domain.admin.adaptor.out.AdminInfo;
 import com.bbringworld.ezparkapi.domain.auth.adaptor.in.LoginForm;
+import com.bbringworld.ezparkapi.domain.auth.adaptor.out.TokenInfo;
 import com.bbringworld.ezparkapi.domain.auth.application.service.LoginService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class AuthController {
     private final LoginService loginService;
 
     @PostMapping(value = "/in")
-    public ResponseEntity<AdminInfo> login(@Valid @RequestBody LoginForm request) {
+    public ResponseEntity<TokenInfo> login(@Valid @RequestBody LoginForm request) {
         return ResponseEntity.ok(loginService.login(request));
     }
 
