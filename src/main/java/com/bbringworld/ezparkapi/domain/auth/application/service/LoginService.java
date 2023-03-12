@@ -1,13 +1,12 @@
 package com.bbringworld.ezparkapi.domain.auth.application.service;
 
-import com.bbringworld.ezparkapi.domain.admin.adaptor.out.AdminInfo;
 import com.bbringworld.ezparkapi.domain.admin.application.service.AdminService;
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 import com.bbringworld.ezparkapi.domain.auth.adaptor.in.LoginForm;
 import com.bbringworld.ezparkapi.domain.auth.adaptor.out.TokenInfo;
 import com.bbringworld.ezparkapi.domain.auth.application.provider.LoginProvider;
 import com.bbringworld.ezparkapi.global.config.security.JwtProvider;
-import com.bbringworld.ezparkapi.global.config.security.TokenFormat;
+import com.bbringworld.ezparkapi.global.domain.adaptor.in.TokenFormat;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

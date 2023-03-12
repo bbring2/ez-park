@@ -3,7 +3,7 @@ package com.bbringworld.ezparkapi.global.config.security.filter;
 import com.bbringworld.ezparkapi.domain.auth.exception.AuthenticationException;
 import com.bbringworld.ezparkapi.global.config.security.CustomUserDetails;
 import com.bbringworld.ezparkapi.global.config.security.JwtProvider;
-import com.bbringworld.ezparkapi.global.config.security.TokenFormat;
+import com.bbringworld.ezparkapi.global.domain.adaptor.in.TokenFormat;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

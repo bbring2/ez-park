@@ -1,4 +1,4 @@
-package com.bbringworld.ezparkapi.global.config.security;
+package com.bbringworld.ezparkapi.global.domain.adaptor.in;
 
 import com.bbringworld.ezparkapi.domain.admin.dao.entity.Admin;
 import com.bbringworld.ezparkapi.domain.code.Role;
