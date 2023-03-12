@@ -1,6 +1,5 @@
 package com.bbringworld.ezparkapi.domain.auth.api;
 
-import com.bbringworld.ezparkapi.domain.admin.adaptor.out.AdminInfo;
 import com.bbringworld.ezparkapi.domain.auth.adaptor.in.LoginForm;
 import com.bbringworld.ezparkapi.domain.auth.adaptor.out.TokenInfo;
 import com.bbringworld.ezparkapi.domain.auth.application.service.LoginService;
