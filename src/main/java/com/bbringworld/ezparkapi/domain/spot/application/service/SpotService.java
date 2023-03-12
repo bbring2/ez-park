@@ -7,36 +7,27 @@ import com.bbringworld.ezparkapi.domain.spot.adaptor.in.SpotUpdate;
 import com.bbringworld.ezparkapi.domain.spot.adaptor.out.SpotInfo;
 import com.bbringworld.ezparkapi.domain.spot.application.provider.SpotProvider;
 import com.bbringworld.ezparkapi.domain.spot.dao.entity.Spot;
-import com.bbringworld.ezparkapi.domain.spot.dao.repository.SpotRepository;
-import com.bbringworld.ezparkapi.domain.spot.exception.SpotNotFoundException;
+import com.bbringworld.ezparkapi.domain.spot.dao.repository.SpotRepositorySupport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class SpotService implements SpotProvider {
 
-    private final SpotRepository repository;
+    private final SpotRepositorySupport repositorySupport;
 
     private final AdminService adminService;
-
-    public Spot getById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(SpotNotFoundException::new);
-    }
-
-    public Spot save(Spot spot) {
-        return repository.save(spot);
-    }
 
     @Override
     public void create(Spot spot) {
         checkDuplication(spot);
-        save(spot);
+        repositorySupport.save(spot);
     }
 
     public void register(SpotRegistry registry) {
@@ -49,7 +40,11 @@ public class SpotService implements SpotProvider {
 
     @Override
     public void delete(long id) {
+        Spot spot = repositorySupport.getById(id);
 
+        spot.unavailable();
+
+        repositorySupport.save(spot);
     }
 
     @Override
@@ -61,14 +56,23 @@ public class SpotService implements SpotProvider {
         return null;
     }
 
-    @Override
     public List<SpotInfo> fetch() {
-        return null;
+        return repositorySupport.findAll()
+                .stream()
+                .map(SpotInfo::of)
+                .collect(Collectors.toList());
+    }
+
+    public List<SpotInfo> fetchByFloor(String floor) {
+        return repositorySupport.findAllByFloor(floor)
+                .stream()
+                .map(SpotInfo::of)
+                .collect(Collectors.toList());
     }
 
     @Override
     public SpotInfo search(long id) {
-        return null;
+        return SpotInfo.of(repositorySupport.getById(id));
     }
 
     @Override
