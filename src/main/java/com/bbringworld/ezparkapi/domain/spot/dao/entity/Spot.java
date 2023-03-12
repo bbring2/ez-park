@@ -34,11 +34,11 @@ public class Spot extends Registration {
     @Column(columnDefinition = "TINYINT(1)")
     private boolean status;
 
-    public void makeFull() {
+    public void available() {
         this.status = false;
     }
 
-    public void makeEmpty() {
+    public void unavailable() {
         this.status = true;
     }
 
