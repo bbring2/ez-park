@@ -10,6 +10,19 @@ group = 'com.bbringworld'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+ext {
+    asciidocVersion = "2.0.6.RELEASE"
+    snippetsDir = file('build/generated-snippets')
+}
+
+bootJar {
+    dependsOn asciidoctor
+    copy {
+        from asciidoctor.outputDir
+        into "BOOT-INF/classes/static/docs"
+    }
+}
+
 configurations {
     asciidoctorExt
     compileOnly {
@@ -55,9 +68,29 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
 }
 
-ext {
-    asciidocVersion = "2.0.6.RELEASE"
-    snippetsDir = file('build/generated-snippets')
+asciidoctor {
+//    inputs.dir snippetsDir
+//    configurations 'asciidoctorExt'
+    dependsOn test
+    inputs.dir snippetsDir
+}
+
+asciidoctor.doFirst {
+    delete file('src/main/resources/static/docs')
+}
+
+task copyDocument(type: Copy) {
+    dependsOn asciidoctor
+    from file("build/docs/asciidoc")
+    into file("src/main/resources/static/docs")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+build {
+    dependsOn copyDocument
 }
 
 test {
@@ -81,18 +114,4 @@ configurations {
 
 compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
-}
-
-asciidoctor {
-    inputs.dir snippetsDir
-    configurations 'asciidoctorExt'
-    dependsOn test
-}
-
-bootJar {
-    dependsOn asciidoctor
-    copy {
-        from asciidoctor.outputDir
-        into "src/main/resources/static/docs"
-    }
 }
